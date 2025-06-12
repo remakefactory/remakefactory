@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.remakefactory.remakefactory.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "remakefactory.refmap.json",
+  "mixins": [
+    "client.GtceuMultiblockRecipeTransferMixin",
+    "client.GtceuRecipeTransferReviseMixin"
+  ],
+  "client": [
+    "client.ItemRendererMixin",
+    "client.KeyboardHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

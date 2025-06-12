@@ -1,0 +1,25 @@
+{
+  "config.remakefactory.recipe_hijacker": "Recipe Modification",
+  "config.remakefactory.recipe_hijacker.enable": "Enable Recipe Hijacker",
+  "config.remakefactory.gtceu": "GregTechCEu Settings",
+  "config.remakefactory.gtceu.enable": "Enable GTCEu Modifications",
+  "config.remakefactory.gtceu.reorder.enable": "Reorder Recipes",
+  "config.remakefactory.gtceu.multi_block.enable": "Handle Multi-block Recipes",
+  "config.remakefactory.gtceu.scaling_multiplier": "Scaling Multiplier",
+  "config.remakefactory.gtceu.filter.enable": "Enable Filtering",
+
+
+  "commands.remakefactory.config.get.success": "Config '%s' is currently set to '%s'",
+  "commands.remakefactory.config.set.success": "Config '%s' has been set to '%s'",
+  "commands.remakefactory.config.error.invalid_key": "Error: Unknown config key '%s'",
+  "commands.remakefactory.config.error.unsupported_type": "Error: Config type '%s' is not supported by this command",
+  "commands.remakefactory.config.error.invalid_number": "Error: '%s' is not a valid number",
+  "commands.remakefactory.config.error.general": "An unexpected error occurred: %s",
+  "commands.remakefactory.config.info.incomplete_path": "Incomplete path '%s'. Possible next options:",
+  "commands.remakefactory.config.info.suggest_click": "Click to suggest command",
+
+
+  "item.remakefactory.multiblock_placeholder": "multiblock placeholder",
+  "message.remakefactory.placeholder_cleared": "placeholder cleared",
+  "tooltip.remakefactory.placeholder.shape": "shape: %s"
+}

@@ -1,0 +1,23 @@
+{
+  "config.remakefactory.recipe_hijacker": "配方修改",
+  "config.remakefactory.recipe_hijacker.enable": "启用配方修改器",
+  "config.remakefactory.gtceu": "GregTechCEu 设置",
+  "config.remakefactory.gtceu.enable": "启用 GTCEu 修改",
+  "config.remakefactory.gtceu.reorder.enable": "重排配方",
+  "config.remakefactory.gtceu.multi_block.enable": "处理多方块机器配方",
+  "config.remakefactory.gtceu.scaling_multiplier": "缩放乘数",
+  "config.remakefactory.gtceu.filter.enable": "启用过滤",
+
+  "commands.remakefactory.config.get.success": "配置项 '%s' 的当前值为 '%s'",
+  "commands.remakefactory.config.set.success": "已将配置项 '%s' 的值设置为 '%s'",
+  "commands.remakefactory.config.error.invalid_key": "错误: 未知的配置项 '%s'",
+  "commands.remakefactory.config.error.unsupported_type": "错误: 此命令不支持配置类型 '%s'",
+  "commands.remakefactory.config.error.invalid_number": "错误: '%s' 不是一个有效的数字",
+  "commands.remakefactory.config.error.general": "发生意外错误: %s",
+  "commands.remakefactory.config.info.incomplete_path": "路径 '%s' 不完整。可能的下一级选项有:",
+  "commands.remakefactory.config.info.suggest_click": "点击以填充命令",
+
+  "item.remakefactory.multiblock_placeholder": "多方块结构占位符",
+  "message.remakefactory.placeholder_cleared": "多方块数据已清除",
+  "tooltip.remakefactory.placeholder.shape": "结构形态: %s"
+}
