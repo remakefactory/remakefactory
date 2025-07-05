@@ -1,7 +1,7 @@
 package com.remakefactory.remakefactory.event;
 
 import com.remakefactory.remakefactory.Remakefactory;
-import com.remakefactory.remakefactory.command.ConfigCommands;
+import com.remakefactory.remakefactory.command.RemakeFactoryCommands;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,6 +21,6 @@ public final class RemakeFactoryEvents {
      */
     @SubscribeEvent
     public static void onRegisterCommands(RegisterCommandsEvent event) {
-        ConfigCommands.register(event.getDispatcher());
+        RemakeFactoryCommands.register(event.getDispatcher());
     }
 }

@@ -179,6 +179,7 @@ dependencies {
     implementation fg.deobf("curse.maven:ldlib-626676:6203898")
     implementation fg.deobf("curse.maven:ftb-library-forge-404465:6164053")
     implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+    implementation fg.deobf("curse.maven:jade-324717:6271651")
 
 }
 
