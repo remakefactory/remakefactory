@@ -28,6 +28,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.crafting.Recipe;
@@ -313,7 +314,7 @@ public final class ConflictCommand {
                 throw ERROR_CANNOT_CREATE_DIR.create();
             }
         }
-        String fileName = String.format("bookmarks_%s_optimized.ini", namespace);
+        String fileName = String.format("bookmarks_%s.ini", namespace);
         Path filePath = outputPath.resolve(fileName);
         String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
         Path backupFilePath = outputPath.resolve(String.format("bookmarks_%s_%s.bak", namespace, timestamp));
@@ -332,15 +333,17 @@ public final class ConflictCommand {
             }
             LOGGER.info(Component.translatable("log.remakefactory.conflict.info.write_success", filePath).getString());
             String relativePath = server.getFile("").toPath().relativize(filePath).toString().replace('\\', '/');
-            Component filePathComponent = Component.translatable("commands.remakefactory.conflict.write_success",
-                    Component.literal(relativePath)
-                            .withStyle(style -> style
-                                    .withColor(ChatFormatting.GREEN)
-                                    .withUnderlined(true)
-                                    .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, filePath.toAbsolutePath().toString()))
-                                    .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("chat.copy.click")))
-                            )
-            );
+            MutableComponent clickableFilePath = Component.literal(relativePath)
+                    .withStyle(style -> style
+                            .withColor(ChatFormatting.GREEN)
+                            .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, filePath.toAbsolutePath().toString()))
+                            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("remakefactory.chat.file_open.click")))
+                    );
+
+            MutableComponent bracketedComponent = Component.translatable("chat.square_brackets", clickableFilePath);
+
+            Component filePathComponent = Component.translatable("commands.remakefactory.conflict.write_success", bracketedComponent);
+
             return Optional.of(filePathComponent);
         } catch (IOException e) {
             LOGGER.error(Component.translatable("log.remakefactory.conflict.error.write_file_io", filePath).getString(), e);

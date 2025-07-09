@@ -30,8 +30,10 @@
   "commands.remakefactory.conflict.single_mode": "Single-Recipe Mode (Exploration): Searching for a max conflict-free set within %s (%s recipes)...",
   "commands.remakefactory.conflict.multi_mode": "Multi-Recipe Mode (Optimization): Filtering for the largest conflict-free subset from %s recipes using %s...",
   "commands.remakefactory.conflict.test.start": "Starting conflict analysis for a custom set of %s recipes...",
-  "commands.remakefactory.conflict.summary": "Analysis complete in %s ms. See optimized bookmark file for results.",
+  "commands.remakefactory.conflict.summary": "Analysis complete in %s ms.",
   "commands.remakefactory.conflict.write_success": "Successfully wrote optimized bookmarks to: %s",
+
+  "remakefactory.chat.file_open.click": "click open file",
 
   "log.remakefactory.conflict.error.list_saves_dir": "Could not list directories to suggest bookmark files: %s",
   "log.remakefactory.conflict.error.read_bookmark_io": "An I/O exception occurred while reading bookmark file: %s",

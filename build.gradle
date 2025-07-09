@@ -1,3 +1,4 @@
+//file:noinspection SpellCheckingInspection
 buildscript {
     repositories {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
@@ -172,14 +173,26 @@ dependencies {
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     implementation fg.deobf("curse.maven:jei-238222:6075247")
+
+    implementation fg.deobf("curse.maven:ldlib-626676:6203898")
     implementation fg.deobf("curse.maven:gregtechceu-modern-890405:5753724")
+
     implementation fg.deobf("curse.maven:guideme-1173950:6489464")
     implementation fg.deobf("curse.maven:applied-energistics-2-223794:6501484")
-    implementation fg.deobf("curse.maven:config-menus-forge-544048:4672356")
-    implementation fg.deobf("curse.maven:ldlib-626676:6203898")
-    implementation fg.deobf("curse.maven:ftb-library-forge-404465:6164053")
-    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
-    implementation fg.deobf("curse.maven:jade-324717:6271651")
+
+    runtimeOnly fg.deobf("curse.maven:mouse-tweaks-60089:5338457")
+
+    runtimeOnly fg.deobf("curse.maven:jei-integration-265917:4999754")
+
+    runtimeOnly fg.deobf("curse.maven:architectury-api-419699:5137938")
+    runtimeOnly fg.deobf("curse.maven:ftb-library-forge-404465:6164053")
+
+    runtimeOnly fg.deobf("curse.maven:jade-324717:6271651")
+
+    runtimeOnly fg.deobf("curse.maven:modern-ui-352491:6199942")
+
+    runtimeOnly fg.deobf("curse.maven:embeddium-908741:5681725")
+    runtimeOnly fg.deobf("curse.maven:oculus-581495:5299671")
 
 }
 

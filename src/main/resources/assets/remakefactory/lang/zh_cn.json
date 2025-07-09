@@ -30,8 +30,10 @@
   "commands.remakefactory.conflict.single_mode": "单配方模式(探索)：将在 %s (%s 个配方)中寻找最大无冲突集合...",
   "commands.remakefactory.conflict.multi_mode": "多配方模式(优化)：将从 %s 个配方中使用 %s 筛选最大无冲突子集...",
   "commands.remakefactory.conflict.test.start": "开始为 %s 个自定义配方进行冲突分析...",
-  "commands.remakefactory.conflict.summary": "分析在 %s 毫秒内完成。请查看优化后的书签文件以获取结果。",
+  "commands.remakefactory.conflict.summary": "分析在 %s 毫秒内完成。",
   "commands.remakefactory.conflict.write_success": "已成功将优化后的书签写入到: %s",
+
+  "remakefactory.chat.file_open.click": "点击打开文件",
 
   "log.remakefactory.conflict.error.list_saves_dir": "无法列出存档目录以提供书签建议: %s",
   "log.remakefactory.conflict.error.read_bookmark_io": "读取书签文件时发生IO异常: %s",
