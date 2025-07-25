@@ -80,17 +80,9 @@ public abstract class GtceuMultiblockRecipeTransferMixin {
             boolean doTransfer,
             CallbackInfoReturnable<IRecipeTransferError> cir) {
 
-        if (!(recipe instanceof MultiblockInfoWrapper wrapper)) {
-            return; // This mixin only handles GTCEu multiblock info pages.
-        }
-
-        if (!remakefactory$isMultiblockTransferEnabled()) {
-            return;
-        }
-
-        // For the pre-check (when JEI shows the '+' button), always allow the transfer.
-        if (!doTransfer) {
-            cir.setReturnValue(null);
+        if (!(recipe instanceof MultiblockInfoWrapper wrapper) ||
+                !remakefactory$isMultiblockTransferEnabled() ||
+                !doTransfer) {
             return;
         }
 

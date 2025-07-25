@@ -23,25 +23,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.lang.reflect.Field;
 import java.util.*;
 
 @Mixin(value = appeng.integration.modules.jei.transfer.EncodePatternTransferHandler.class, remap = false, priority = 1010)
-public abstract class GtceuRecipeTransferReviseMixin  {
-
-    @Unique
-    private static final Field remakefactory$contentField;
-
-    static {
-        Field field = null;
-        try {
-            field = Content.class.getDeclaredField("content");
-            field.setAccessible(true);
-        } catch (NoSuchFieldException e) {
-            // Error is handled by null-checking the field later.
-        }
-        remakefactory$contentField = field;
-    }
+public abstract class GtceuRecipeTransferReviseMixin {
 
     @Inject(
             method = "transferRecipe(Lappeng/menu/me/items/PatternEncodingTermMenu;Ljava/lang/Object;Lmezz/jei/api/gui/ingredient/IRecipeSlotsView;Lnet/minecraft/world/entity/player/Player;ZZ)Lmezz/jei/api/recipe/transfer/IRecipeTransferError;",
@@ -57,16 +42,9 @@ public abstract class GtceuRecipeTransferReviseMixin  {
             boolean doTransfer,
             CallbackInfoReturnable<IRecipeTransferError> cir) {
 
-        if (!(recipe instanceof GTRecipeWrapper gtRecipeWrapper)) {
-            return;
-        }
-
-        if (!remakefactory$isGtceuModificationEnabled()) {
-            return;
-        }
-
-        if (!doTransfer) {
-            cir.setReturnValue(null);
+        if (!(recipe instanceof GTRecipeWrapper gtRecipeWrapper) ||
+                !remakefactory$isGtceuModificationEnabled() ||
+                !doTransfer) {
             return;
         }
 
@@ -155,12 +133,11 @@ public abstract class GtceuRecipeTransferReviseMixin  {
 
     @Unique
     private void remakefactory$scaleRecipeContents(Map<RecipeCapability<?>, List<Content>> contents, int multiplier) {
-        if (remakefactory$contentField == null) return;
 
         for (List<Content> contentList : contents.values()) {
             for (Content content : contentList) {
                 try {
-                    Object ingredientObj = remakefactory$contentField.get(content);
+                    Object ingredientObj = content.content;
                     if (ingredientObj instanceof SizedIngredient si) {
                         for (ItemStack stack : si.getItems()) {
                             if (!stack.isEmpty()) {
@@ -175,7 +152,8 @@ public abstract class GtceuRecipeTransferReviseMixin  {
                             }
                         }
                     }
-                } catch (Exception ignored) {}
+                } catch (Exception ignored) {
+                }
             }
         }
     }
@@ -198,13 +176,12 @@ public abstract class GtceuRecipeTransferReviseMixin  {
 
     @Unique
     private void remakefactory$addContentsToSlotList(Map<RecipeCapability<?>, List<Content>> contentMap, List<List<GenericStack>> allSlotsList) {
-        if (remakefactory$contentField == null) return;
 
         List<Content> itemContents = contentMap.get(ItemRecipeCapability.CAP);
         if (itemContents != null) {
             for (Content content : itemContents) {
                 try {
-                    Object ingredientObj = remakefactory$contentField.get(content);
+                    Object ingredientObj = content.content;
                     List<GenericStack> stacksForThisSlot = new ArrayList<>();
                     if (ingredientObj instanceof SizedIngredient si) {
                         Arrays.stream(si.getItems()).map(GenericStack::fromItemStack).filter(Objects::nonNull).forEach(stacksForThisSlot::add);
@@ -214,7 +191,8 @@ public abstract class GtceuRecipeTransferReviseMixin  {
                     if (!stacksForThisSlot.isEmpty()) {
                         allSlotsList.add(stacksForThisSlot);
                     }
-                } catch (Exception ignored) {}
+                } catch (Exception ignored) {
+                }
             }
         }
 
@@ -222,7 +200,7 @@ public abstract class GtceuRecipeTransferReviseMixin  {
         if (fluidContents != null) {
             for (Content content : fluidContents) {
                 try {
-                    Object ingredientObj = remakefactory$contentField.get(content);
+                    Object ingredientObj = content.content;
                     List<GenericStack> stacksForThisSlot = new ArrayList<>();
                     if (ingredientObj instanceof FluidIngredient fi) {
                         for (com.lowdragmc.lowdraglib.side.fluid.FluidStack ldlFs : fi.getStacks()) {
@@ -238,7 +216,8 @@ public abstract class GtceuRecipeTransferReviseMixin  {
                     if (!stacksForThisSlot.isEmpty()) {
                         allSlotsList.add(stacksForThisSlot);
                     }
-                } catch (Exception ignored) {}
+                } catch (Exception ignored) {
+                }
             }
         }
     }
